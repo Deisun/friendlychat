@@ -60,6 +60,7 @@ class ChatScreenState extends State<ChatScreen> {
   }
 }
 
+
 class ChatMessage extends StatelessWidget {
   ChatMessage() {
     this.text;
@@ -75,10 +76,7 @@ class ChatMessage extends StatelessWidget {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.symmetric(16.0),
-            child: CircleAvatar(
-              child: Text(
-                _name[0]
-              ),
+            child: CircleAvatar(child: Text(_name[0]),
             ),
           ),
           Column(
