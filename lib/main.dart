@@ -8,14 +8,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Friendly Chat',
-      home: ChatScreen(title: 'Chat Screen'),
+      home: ChatScreen(),
     );
   }
 }
 
-class ChatScreen extends StatelessWidget {
-  ChatScreen({Key key, this.title}) : super(key: key);
-  final String title;
+class ChatScreen extends StatefulWidget {
+  @override
+  ChatScreenState createState() => ChatScreenState();
+}
+
+class ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
