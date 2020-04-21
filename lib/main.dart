@@ -29,7 +29,23 @@ class ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: Text("Friendly Chat"),
       ),
-      body: _buildTextComposer(),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              reverse: true,
+              itemBuilder: (_, int index) => _messages[index],
+              itemCount: _messages.length,
+            ),
+          ),
+          Divider(height: 1.0),
+          Container(
+            decoration: BoxDecoration(color: Theme.of(context).cardColor),
+            child: _buildTextComposer(),
+            ),
+        ],
+      )
     );
   }
 
