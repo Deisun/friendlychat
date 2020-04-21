@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const String _name = "Rob";
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,6 +20,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> {
+  final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textEditingController = new TextEditingController();
 
   @override
@@ -57,14 +60,20 @@ class ChatScreenState extends State<ChatScreen> {
 
   void _handleSubmitted(String text) {
     _textEditingController.clear();
+
+    ChatMessage message = new ChatMessage(
+      text: text,
+    );
+
+    setState(() {
+      _messages.insert(0, message);
+    });
   }
 }
 
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage() {
-    this.text;
-  }
+  ChatMessage({this.text});
   final String text;
 
   @override
@@ -75,7 +84,7 @@ class ChatMessage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.symmetric(16.0),
+            margin: const EdgeInsets.only(right: 16.0),
             child: CircleAvatar(child: Text(_name[0]),
             ),
           ),
