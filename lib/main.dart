@@ -18,6 +18,8 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _textEditingController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +27,23 @@ class ChatScreenState extends State<ChatScreen> {
         title: Text("Friendly Chat"),
       ),
     );
+  }
+
+  Widget _buildTextComposer() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: TextField(
+        controller: _textEditingController,
+        onSubmitted: _handleSubmitted,
+        decoration: InputDecoration.collapsed(
+            hintText: "Send a message"),
+      )
+
+    );
+  }
+
+  void _handleSubmitted(String text) {
+    _textEditingController.clear();
   }
 }
 
